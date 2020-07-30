@@ -1,0 +1,68 @@
+{% load app_filter %}
+<!DOCTYPE html>{% load static %}
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Инфляция в России</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body>
+    {% block content %}
+      <div class="row">
+        <h1 class="col s12">Инфляция в России</h1>
+        <div class="col s12 m8">
+
+        <table class="u-full-width">
+          <thead>
+            <tr>
+              <th>Год</th>
+              <th>Январь</th>
+              <th>Февраль</th>
+              <th>Март</th>
+              <th>Апрель</th>
+              <th>Май</th>
+              <th>Июнь</th>
+              <th>Июль</th>
+              <th>Август</th>
+              <th>Сентябрь</th>
+              <th>Октябрь</th>
+              <th>Ноябрь</th>
+              <th>Декабрь</th>
+              <th>Суммарная</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for station in bus_stations %}
+          {% cycle 'red' 'blue' 'green' as color  silent %}
+          <tr>
+            <td style="color: orange ">{{ station.Год }}</td>
+            <td style=" background: {{ station.Янв| color_app }}">{{ station.Янв }}</td>
+            <td style=" background: {{ station.Фев| color_app }}">{{ station.Фев }}</td>
+            <td style=" background: {{ station.Мар| color_app }}">{{ station.Мар }}</td>
+            <td style=" background: {{ station.Апр| color_app }}">{{ station.Апр }}</td>
+            <td style=" background: {{ station.Май| color_app }}">{{ station.Май }}</td>
+            <td style=" background: {{ station.Июн| color_app }}">{{ station.Июн }}</td>
+            <td style=" background: {{ station.Июл| color_app }}">{{ station.Июл }}</td>
+            <td style=" background: {{ station.Авг| color_app }}">{{ station.Авг }}</td>
+            <td style=" background: {{ station.Сен| color_app }}">{{ station.Сен }}</td>
+            <td style=" background: {{ station.Окт| color_app }}">{{ station.Окт }}</td>
+            <td style=" background: {{ station.Ноя| color_app }}">{{ station.Ноя }}</td>
+            <td style=" background: {{ station.Дек| color_app }}">{{ station.Дек }}</td>
+            <td style=" background: gray ">{{ station.Суммарная }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+        </div>
+      </div>
+    {% endblock %}
+
+  </body>
+</html>
